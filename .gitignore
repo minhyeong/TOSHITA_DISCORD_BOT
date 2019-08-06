@@ -1,0 +1,8 @@
+
+DS.*
+*.exe
+bin/
+.git/
+.vscode/
+Dyno.txt
+その他
