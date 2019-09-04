@@ -3,6 +3,7 @@
 
 import constant as c
 import class_ as cl
+#import music as mp
 import discord
 import os
 
@@ -22,6 +23,9 @@ async def on_member_join(member):
     text = cl.WelcomeText()
     embed = discord.Embed(title="", description = text.get_text(FILE_NAME).replace('#USER', member.mention), color=0xeee657)
     await channel.send(embed=embed)
+    # 新人さんにGESTタグの付与
+    role = discord.utils.get(member.guild.roles, name='GUEST')
+    await member.add_roles(role)
 
 @client.event
 async def on_message(message):
@@ -30,10 +34,15 @@ async def on_message(message):
         return
 
     # ログアウトさせるコマンド
-    if message.content == '/Oliver_Fin':
+    if message.content == '!SHUTDOWN_OLIVER':
         await message.channel.send('Oliver ログアウトします')
-        await client.logout()
         print('Oliver ログアウトしました')
+        await client.logout()
 
+    # GUESTタグが付与される
+    if message.content == '/join':
+        role = discord.utils.get(message.guild.roles, name='GUEST')
+        await message.author.add_roles(role)
+    
 
-#client.run(c.TOKEN)
+client.run(c.TOKEN)

@@ -1,8 +1,5 @@
 
 import constant as c
-import os
-
-FILE_NAME = os.path.abspath('sozai/welcomeText.txt')
 
 class WelcomeText:
     def __init__(self):
@@ -54,9 +51,9 @@ class Dice:
         
 
 
-a = Dice()
-a.dice("GO80")
-a.dice("GO60")
+#a = Dice()
+#a.dice("GO80")
+#a.dice("GO60")
 
 """
 DICE
