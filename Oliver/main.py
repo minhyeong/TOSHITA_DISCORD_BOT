@@ -23,8 +23,8 @@ async def on_member_join(member):
     text = cl.WelcomeText()
     embed = discord.Embed(title="", description = text.get_text(FILE_NAME).replace('#USER', member.mention), color=0xeee657)
     await channel.send(embed=embed)
-    # 新人さんにGESTタグの付与
-    role = discord.utils.get(member.guild.roles, name='GUEST')
+    # 新人さんに新規参加者タグの付与
+    role = discord.utils.get(member.guild.roles, name='新規参加者')
     await member.add_roles(role)
 
 @client.event
